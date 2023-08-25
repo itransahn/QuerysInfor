@@ -1,3 +1,4 @@
+/* lista de campos requeridos
 ETIQUETA
 ZONA
 PROVEEDOR
@@ -16,6 +17,7 @@ UNIDADES
 VENCIMIENTO
 ULTIMARECEPCION
 ULTIMAPREPARACION
+*/
 
 SELECT 
 ISNULL(LLI.ID,'-') AS ETIQUETA
@@ -68,10 +70,12 @@ ON LLI.SKU = SK.SKU AND LLI.STORERKEY = SK.STORERKEY
 LEFT JOIN WMWHSE51.PACK AS PA
 ON RD.PACKKEY = PA.PACKKEY
 
-WHERE LLI.QTY > 0 and LLI.STORERKEY LIKE '1770142' and LEN(LLI.ID) > 2
+WHERE LLI.QTY > 0 and LLI.STORERKEY LIKE '1770142'/*limitar la consulta a el cliente la colonia*/
+ and LEN(LLI.ID) > 2 /*mostrar solo almacenmientos con etiqueta definida*/
 
 
 
+ /*para ver los codigos alternativos*/
 SELECT * FROM WMWHSE51.ALTSKU where SKU in(
 '1018790',
 '1001788',
@@ -84,10 +88,9 @@ SELECT * FROM WMWHSE51.ALTSKU where SKU in(
 '1000007',
 '1000111',
 '1000115'
-) /*para ver los codigos alternativos*/
+)
 
 
-SELECT * FROM WMWHSE51.PACK WHERE PACKKEY LIKE 'LC_12T_4H_48P_6C_1018790'
-
-
-SELECT MAX(actualshipdate) AS actualshipdate, 'A' FROM WMWHSE51.ORDERDETAIL WHERE SKU LIKE '1018790'
+/*validacion de paquetes*/
+SELECT * FROM WMWHSE51.PACK 
+WHERE PACKKEY LIKE 'LC_12T_4H_48P_6C_1018790' 
