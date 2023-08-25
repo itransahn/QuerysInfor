@@ -1,4 +1,3 @@
-/*esto es un comentario*/
 SELECT DISTINCT
 (LT.QTY/PA.CASECNT) AS 'CANTIDADCAJAS',
 LT.LOC,
