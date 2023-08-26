@@ -53,7 +53,7 @@ CROSS APPLY STRING_SPLIT(LOC, '-',1)
 WHERE LOC LIKE '14-100-2-1'
 GROUP BY value
 
-/*devuelve el valor correspondiente a lo que se indica en el form*/
+/*devuelve el valor correspondiente a lo que se indica en el campo for*/
 SELECT   
 [0], [1], [2], [3]  
 FROM (
