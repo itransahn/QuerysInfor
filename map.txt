@@ -1,0 +1,51 @@
+eanTipo_01:0027084120134
+descripcionRF:CARRITO HOT WHEELERS
+descripcion:CARRITO HOT WHEELERS METALICO                               
+descripcionProveedor:C                                       
+codigoFamilia:03110204
+contaminacion:05
+inflamabilidad:04
+rotacionPicking:06
+apilabilidad:01
+uniMinDespacho:03
+controlEntrada:01
+controlSalida:01
+altoUnidad:0001
+anchoUnidad:0001
+largoUnidad:0001
+pesoUnidad:00000001
+altoCaja:0001
+anchoCaja:0001
+largoCaja:0001
+pesoCaja:00000001
+unidadesPack:000 
+unidadesCaja:0012 
+cajasPorNivel:999
+nivelesPorPalet:9
+esDeCrossdocking:N
+eanTipo_03:00000000000000
+eanTipo_02:00000000000000
+diasVidaUtilRecepcion:0000
+pesoEtiquetado:N
+envaseUnidad:0000000000000
+envaseCaja:0000000000000
+envasePack:0000000000000
+envase:1
+porcentajeredondeo:000
+codigoproveedor:101000309     
+cod_erp:1001401           
+refrigerado:10
+stockminimo:001
+lecturaunitaria:01
+canastapropia:01
+
+
+0041800715008VINO WELCHS SPARKLINVINO WELCHS SPARKLING WHITE GRAPE 750ML                     
+A                                       01050104050406010301010001000100010000000100010001000100000001000001299999N41800715503   
+000000000000000000N000000000000000000000000000000000000000N1000
+102000300     
+1001788           
+100
+01
+01
+01
