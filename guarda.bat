@@ -10,36 +10,30 @@ set "Min=%dt:~10,2%"
 set "Seg=%dt:~12,2%"
 set "dia_hora=%AAAA%_%MM%_%DD%_%HH%_%Min%_%Seg%"
 
+:Menu
+cls
 echo 1. Cargar Actualizacion
 echo 2. Actualizar Rama de orige
 echo Q. Salir
-echo
 set /P tarea=Ingrese Valor de tarea:
-SWITCH tarea
-CASE 1 
 
-set /P COMENTARIO=Ingrese un comentario:
+if %tarea%==1 set /P COMENTARIO=Ingrese un comentario:
 git add .
 git commit -m %COMENTARIO%_%dia_hora%
 git push -u origin Dandino
+pause
+goto :Menu 
 
-CASE 2
+if %tarea%==2 echo dos 
+::git pull origin Dandino
+pause
+goto :Menu
 
-git pull origin Dandino
+if %tarea%==Q echo adios
 
-CASA Q or q
-echo adios
-ENDSWITCH
+if %tarea%==q echo adios
 ::CASEALL
 
 ::[DEFAULT]
-
-::set /P COMENTARIO=Ingrese un comentario:
-::git add .
-::git commit -m %dia_hora%
-::git commit -m %COMENTARIO%_%dia_hora%
-::git push -u origin Dandino
-
-
 
 pause
