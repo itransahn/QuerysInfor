@@ -17,22 +17,27 @@ echo 2. Actualizar Rama de orige
 echo Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 
-if %tarea%==1 set /P COMENTARIO=Ingrese un comentario:
+if %tarea%=="1" set /P COMENTARIO=Ingrese un comentario:
 git add .
 git commit -m %COMENTARIO%_%dia_hora%
 git push -u origin Dandino
 pause
 goto :Menu 
 
-if %tarea%==2 git pull origin Dandino
+if %tarea%=="2" git pull origin Dandino
 pause
 goto :Menu
 
+if %tarea%=="q" goto salir
+
+if %tarea%=="Q" goto salir
+
 if %tarea% GTR 3 echo Error
 
 if %tarea% GTR 3 echo Error
-::CASEALL
 
-::[DEFAULT]
+:salir
+	@cls&exit
+
 
 pause
