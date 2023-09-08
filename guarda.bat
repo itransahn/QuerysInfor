@@ -24,8 +24,7 @@ git push -u origin Dandino
 pause
 goto :Menu 
 
-if %tarea%==2 echo dos 
-::git pull origin Dandino
+if %tarea%==2 git pull origin Dandino
 pause
 goto :Menu
 
