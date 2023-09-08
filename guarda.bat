@@ -17,27 +17,69 @@ echo 2. Actualizar Rama de orige
 echo Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 
-if %tarea%=="1" set /P COMENTARIO=Ingrese un comentario:
-git add .
-git commit -m %COMENTARIO%_%dia_hora%
-git push -u origin Dandino
+
+if "%tarea%"=="0" goto inicio
+if "%tarea%"=="1" goto op1
+if "%tarea%"=="2" goto op2
+if "%tarea%"=="3" goto op3
+if "%tarea%"=="4" goto op4
+if "%tarea%"=="5" goto op5
+if "%tarea%"=="6" goto salir
+
+::Mensaje de error, validación cuando se selecciona una opción fuera de rango
+echo. El numero "%var%" no es una opcion valida, por favor intente de nuevo.
+echo.
 pause
-goto :Menu 
+echo.
+goto:inicio
 
-if %tarea%=="2" git pull origin Dandino
-pause
-goto :Menu
+:op1
+    echo.
+    set /P COMENTARIO=Ingrese un comentario:
+	git add .
+	git commit -m %COMENTARIO%_%dia_hora%
+	git push -u origin Dandino	
+    pause
+    goto:inicio
 
-if %tarea%=="q" goto salir
+:op2
+    echo.
+	git pull origin Dandino
+    echo.
+    pause
+    goto:inicio
 
-if %tarea%=="Q" goto salir
+:op3
+    echo.
+    echo. Has elegido la opcion No. 3
+    echo.
+        ::Aquí van las líneas de comando de tu opción
+        color 0A
+    echo.
+    pause
+    goto:inicio
+  
+:op4
+    echo.
+    echo. Has elegido la opcion No. 4
+    echo.
+        ::Aquí van las líneas de comando de tu opción
+        color 0B
+    echo.
+    pause
+    goto:inicio
 
-if %tarea% GTR 3 echo Error
-
-if %tarea% GTR 3 echo Error
+:op5
+    echo.
+    echo. Has elegido la opcion No. 5
+    echo.
+        ::Aquí van las líneas de comando de tu opción
+        color 0C
+    echo.
+    pause
+    goto:inicio
 
 :salir
-	@cls&exit
-
+    @cls&exit
 
 pause
