@@ -28,9 +28,9 @@ if %tarea%==2 git pull origin Dandino
 pause
 goto :Menu
 
-if %tarea%==Q exit
+if %tarea% GTR 3 echo Error
 
-if %tarea%==q exit
+if %tarea% GTR 3 echo Error
 ::CASEALL
 
 ::[DEFAULT]
