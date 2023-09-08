@@ -17,14 +17,15 @@ echo 2. Actualizar Rama de orige
 echo Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 
-
-if "%tarea%"=="0" goto inicio
-if "%tarea%"=="1" goto op1
-if "%tarea%"=="2" goto op2
-if "%tarea%"=="3" goto op3
-if "%tarea%"=="4" goto op4
-if "%tarea%"=="5" goto op5
-if "%tarea%"=="6" goto salir
+:inicio
+cls
+	if "%tarea%"=="0" goto inicio
+	if "%tarea%"=="1" goto op1
+	if "%tarea%"=="2" goto op2
+	if "%tarea%"=="3" goto op3
+	if "%tarea%"=="4" goto op4
+	if "%tarea%"=="5" goto op5
+	if "%tarea%"=="6" goto salir
 
 ::Mensaje de error, validación cuando se selecciona una opción fuera de rango
 echo. El numero "%var%" no es una opcion valida, por favor intente de nuevo.
