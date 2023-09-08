@@ -1,5 +1,6 @@
 @echo off
-TITLE Bienvenid@ %USERNAME% a @lm_blog menu
+set /P Usuario=Ingrese su usario GitHub:
+TITLE Bienvenid@ %Usuario% a Ransa
 MODE con:cols=80 lines=40
 
 for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
@@ -13,25 +14,19 @@ set "Seg=%dt:~12,2%"
 set "dia_hora=%AAAA%_%MM%_%DD%_%HH%_%Min%_%Seg%"
 
 :inicio
+color 0F
 cls
 echo 1. Cargar Actualizacion
 echo 2. Actualizar Rama de orige
+echo 3. Comandos manuales
 echo Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 if "%tarea%"=="0" goto op0
 if "%tarea%"=="1" goto op1
 if "%tarea%"=="2" goto op2
+if "%tarea%"=="3" goto op3
 if "%tarea%"=="q" goto salir
-
-::inicio
-::cls
-::	if "%tarea%"=="0" goto inicio
-::	if "%tarea%"=="1" goto op1
-::	if "%tarea%"=="2" goto op2
-::	if "%tarea%"=="3" goto op3
-::	if "%tarea%"=="4" goto op4
-::	if "%tarea%"=="5" goto op5
-::	if "%tarea%"=="6" goto salir
+if "%tarea%"=="Q" goto salir
 
 ::Mensaje de error, validación cuando se selecciona una opción fuera de rango
 echo. El numero "%tarea%" no es una opcion valida, por favor intente de nuevo.
@@ -45,36 +40,38 @@ goto:inicio
     set /P COMENTARIO=Ingrese un comentario:
 	git add .
 	git commit -m %COMENTARIO%_%dia_hora%
-	git push -u origin Dandino	
+	push -u origin %Usuario%
+	::git push -u origin Dandino	
     pause
     goto:inicio
 
 :op2
     echo.
-	git pull origin Dandino
+    git pull origin %Usuario%
+	::git pull origin Dandino
     echo.
     pause
     goto:inicio
 
 :op3
+    cls
+    color 0A
     echo.
-    echo. Has elegido la opcion No. 3
+    echo. Se ejecutaran los comando manuales
     echo.
+	    set /P comando=Ingrese Comando:
+		if "%comando%"=="quit" goto inicio
+		if  "%comando%" NEQ "q" goto op4
         ::Aquí van las líneas de comando de tu opción
-        color 0A
-    echo.
-    pause
-    goto:inicio
   
 :op4
     echo.
-    echo. Has elegido la opcion No. 4
+    echo. Se ejecuto "%comando%"
     echo.
-        ::Aquí van las líneas de comando de tu opción
-        color 0B
+	%comando%
     echo.
     pause
-    goto:inicio
+    goto:op3
 
 :op5
     echo.
