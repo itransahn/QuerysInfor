@@ -12,19 +12,25 @@ set "HH=%dt:~8,2%"
 set "Min=%dt:~10,2%"
 set "Seg=%dt:~12,2%"
 set "dia_hora=%AAAA%_%MM%_%DD%_%HH%_%Min%_%Seg%"
-
+set "ruta=%~s0"
 :inicio
 color 0F
 cls
+echo.
+echo %ruta%
+cd %ruta%
+echo.
 echo 1. Cargar Actualizacion
 echo 2. Actualizar Rama de orige
 echo 3. Comandos manuales
+echo 4. Ruta
 echo Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 if "%tarea%"=="0" goto op0
 if "%tarea%"=="1" goto op1
 if "%tarea%"=="2" goto op2
 if "%tarea%"=="3" goto op3
+if "%tarea%"=="4" goto op4
 if "%tarea%"=="q" goto salir
 if "%tarea%"=="Q" goto salir
 
@@ -40,9 +46,8 @@ goto:inicio
     set /P COMENTARIO=Ingrese un comentario:
 	git add .
 	git commit -m %COMENTARIO%_%dia_hora%
-	push -u origin %Usuario%
-	::git push -u origin Dandino	
-    pause
+	git push -u origin %Usuario%
+	pause
     goto:inicio
 
 :op2
@@ -61,10 +66,10 @@ goto:inicio
     echo.
 	    set /P comando=Ingrese Comando:
 		if "%comando%"=="quit" goto inicio
-		if  "%comando%" NEQ "q" goto op4
+		if  "%comando%" NEQ "q" goto comando
         ::Aquí van las líneas de comando de tu opción
   
-:op4
+:comando
     echo.
     echo. Se ejecuto "%comando%"
     echo.
@@ -73,12 +78,12 @@ goto:inicio
     pause
     goto:op3
 
-:op5
+:op4
     echo.
     echo. Has elegido la opcion No. 5
     echo.
         ::Aquí van las líneas de comando de tu opción
-        color 0C
+  	%~fI
     echo.
     pause
     goto:inicio
