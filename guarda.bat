@@ -13,12 +13,15 @@ set "Min=%dt:~10,2%"
 set "Seg=%dt:~12,2%"
 set "dia_hora=%AAAA%_%MM%_%DD%_%HH%_%Min%_%Seg%"
 set "ruta=%~s0"
+
+
 :inicio
 color 0F
 cls
 echo.
-echo %ruta%
-cd %ruta%
+::echo %ruta%
+::cd %ruta%
+echo MENU DE INICIO
 echo.
 echo 1. Cargar Actualizacion
 echo 2. Actualizar Rama de orige
@@ -63,6 +66,7 @@ goto:inicio
     color 0A
     echo.
     echo. Se ejecutaran los comando manuales
+    echo. Escriba "quit" para retornar al menu
     echo.
 	    set /P comando=Ingrese Comando:
 		if "%comando%"=="quit" goto inicio
