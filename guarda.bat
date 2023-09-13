@@ -32,7 +32,9 @@ echo. 2. Actualizar Rama de origen
 echo. 3. Estado de Rama
 echo. 4. Ver Ramas
 echo. 5. Comandos manuales
+echo. 6. Actualizar Rama Principal
 echo. Q. Salir
+
 set /P tarea=Ingrese Valor de tarea:
 
 if "%tarea%"=="0" goto op0
@@ -40,6 +42,8 @@ if "%tarea%"=="1" goto op1
 if "%tarea%"=="2" goto op2
 if "%tarea%"=="3" goto op3
 if "%tarea%"=="4" goto op4
+if "%tarea%"=="5" goto op5
+if "%tarea%"=="6" goto op6
 if "%tarea%"=="q" goto salir
 if "%tarea%"=="Q" goto salir
 
@@ -105,6 +109,18 @@ goto:inicio
     echo.
     pause
     goto:op3
+
+:op6
+::actualizacion de master
+    echo.
+    git checkout master
+    pause
+    git merge %Usuario%
+    pause 
+    git push -u origin master
+    pause
+    git checkout %Usuario%
+    goto:inicio
 
 :salir
     @cls&exit
