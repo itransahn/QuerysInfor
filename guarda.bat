@@ -16,18 +16,18 @@ set "ruta=%~s0"
 
 
 :inicio
-color 0F
+color A0
 cls
 echo.
 ::echo %ruta%
 ::cd %ruta%
 echo MENU DE INICIO
 echo.
-echo 1. Cargar Actualizacion
-echo 2. Actualizar Rama de orige
-echo 3. Comandos manuales
-echo 4. Ruta
-echo Q. Salir
+echo. 1. Cargar Actualizacion
+echo. 2. Actualizar Rama de orige
+echo. 3. Comandos manuales
+echo. 4. Ruta
+echo. Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 if "%tarea%"=="0" goto op0
 if "%tarea%"=="1" goto op1
