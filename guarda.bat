@@ -1,8 +1,14 @@
 @echo off
+::captura de nombre de usuario github
 set /P Usuario=Ingrese su usario GitHub:
+::mensaje de titulo de la ventana del cmd
 TITLE Bienvenid@ %Usuario% a Ransa
 MODE con:cols=80 lines=40
 
+::Actualizamos los cambios realizados en las ramas remotas
+git pull origen master
+
+::construccion de la hora y fecha que se enviara en los comentarios
 for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
 set "AA=%dt:~2,2%"
 set "AAAA=%dt:~0,4%"
@@ -14,24 +20,21 @@ set "Seg=%dt:~12,2%"
 set "dia_hora=%AAAA%_%MM%_%DD%_%HH%_%Min%_%Seg%"
 set "ruta=%~s0"
 
-
+::estructura del menu inicio
 :inicio
 color 0F
 cls
 echo.
-::echo %ruta%
-::cd %ruta%
-
-::git pull origen master
-
 echo MENU DE INICIO
 echo.
 echo. 1. Cargar Actualizacion
-echo. 2. Actualizar Rama de orige
-echo. 3. Estado de rama
-echo. 4. Comandos manuales
+echo. 2. Actualizar Rama de origen
+echo. 3. Estado de Rama
+echo. 4. Ver Ramas
+echo. 5. Comandos manuales
 echo. Q. Salir
 set /P tarea=Ingrese Valor de tarea:
+
 if "%tarea%"=="0" goto op0
 if "%tarea%"=="1" goto op1
 if "%tarea%"=="2" goto op2
@@ -72,7 +75,17 @@ goto:inicio
     pause
     goto:inicio
 
-:op4
+:op3
+    echo.
+    echo.
+    git branch
+    echo.
+    pause
+    goto:inicio
+
+
+:op5
+::como lord mario lo pide
     cls
     color A0
     echo.
