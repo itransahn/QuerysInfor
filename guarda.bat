@@ -1,8 +1,14 @@
 @echo off
+git pull origin master
+pause
+::captura de nombre de usuario github
 set /P Usuario=Ingrese su usario GitHub:
+::mensaje de titulo de la ventana del cmd
 TITLE Bienvenid@ %Usuario% a Ransa
 MODE con:cols=80 lines=40
 
+::Actualizamos los cambios realizados en las ramas remotas
+::construccion de la hora y fecha que se enviara en los comentarios
 for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
 set "AA=%dt:~2,2%"
 set "AAAA=%dt:~0,4%"
@@ -14,26 +20,30 @@ set "Seg=%dt:~12,2%"
 set "dia_hora=%AAAA%_%MM%_%DD%_%HH%_%Min%_%Seg%"
 set "ruta=%~s0"
 
-
+::estructura del menu inicio
 :inicio
 color 0F
 cls
 echo.
-::echo %ruta%
-::cd %ruta%
 echo MENU DE INICIO
 echo.
-echo 1. Cargar Actualizacion
-echo 2. Actualizar Rama de orige
-echo 3. Comandos manuales
-echo 4. Ruta
-echo Q. Salir
+echo. 1. Cargar Actualizacion
+echo. 2. Actualizar Rama de origen
+echo. 3. Estado de Rama
+echo. 4. Ver Ramas
+echo. 5. Comandos manuales
+echo. 6. Actualizar Rama Principal
+echo. Q. Salir
+
 set /P tarea=Ingrese Valor de tarea:
+
 if "%tarea%"=="0" goto op0
 if "%tarea%"=="1" goto op1
 if "%tarea%"=="2" goto op2
 if "%tarea%"=="3" goto op3
 if "%tarea%"=="4" goto op4
+if "%tarea%"=="5" goto op5
+if "%tarea%"=="6" goto op6
 if "%tarea%"=="q" goto salir
 if "%tarea%"=="Q" goto salir
 
@@ -62,8 +72,26 @@ goto:inicio
     goto:inicio
 
 :op3
+    echo.
+    echo.
+    git status
+    echo.
+    pause
+    goto:inicio
+
+:op3
+    echo.
+    echo.
+    git branch
+    echo.
+    pause
+    goto:inicio
+
+
+:op5
+::como lord mario lo pide
     cls
-    color 0A
+    color A0
     echo.
     echo. Se ejecutaran los comando manuales
     echo. Escriba "quit" para retornar al menu
@@ -82,14 +110,16 @@ goto:inicio
     pause
     goto:op3
 
-:op4
+:op6
+::actualizacion de master
     echo.
-    echo. Has elegido la opcion No. 5
-    echo.
-        ::Aquí van las líneas de comando de tu opción
-  	%~fI
-    echo.
+    git checkout master
     pause
+    git merge %Usuario%
+    pause 
+    git push -u origin master
+    pause
+    git checkout %Usuario%
     goto:inicio
 
 :salir
