@@ -21,12 +21,15 @@ cls
 echo.
 ::echo %ruta%
 ::cd %ruta%
+
+git pull origen master
+
 echo MENU DE INICIO
 echo.
 echo. 1. Cargar Actualizacion
 echo. 2. Actualizar Rama de orige
-echo. 3. Comandos manuales
-echo. 4. Ruta
+echo. 3. Estado de rama
+echo. 4. Comandos manuales
 echo. Q. Salir
 set /P tarea=Ingrese Valor de tarea:
 if "%tarea%"=="0" goto op0
@@ -62,8 +65,16 @@ goto:inicio
     goto:inicio
 
 :op3
+    echo.
+    echo.
+    git status
+    echo.
+    pause
+    goto:inicio
+
+:op4
     cls
-    color 0A
+    color A0
     echo.
     echo. Se ejecutaran los comando manuales
     echo. Escriba "quit" para retornar al menu
@@ -81,16 +92,6 @@ goto:inicio
     echo.
     pause
     goto:op3
-
-:op4
-    echo.
-    echo. Has elegido la opcion No. 5
-    echo.
-        ::Aquí van las líneas de comando de tu opción
-  	%~fI
-    echo.
-    pause
-    goto:inicio
 
 :salir
     @cls&exit
