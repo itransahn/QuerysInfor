@@ -16,13 +16,13 @@ set "ruta=%~s0"
 
 
 :inicio
-color A0
+color 0F
 cls
 echo.
 ::echo %ruta%
 ::cd %ruta%
 
-git pull origen master
+::git pull origen master
 
 echo MENU DE INICIO
 echo.
