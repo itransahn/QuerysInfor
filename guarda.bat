@@ -1,7 +1,4 @@
 @echo off
-::Actualizamos los cambios realizados en las ramas remotas
-git pull origin master
-pause
 ::captura de nombre de usuario github
 set /P Usuario=Ingrese su usario GitHub:
 ::mensaje de titulo de la ventana del cmd
@@ -34,6 +31,7 @@ echo. 3. Estado de Rama
 echo. 4. Ver Ramas
 echo. 5. Comandos manuales
 echo. 6. Actualizar Rama Principal
+echo. 7. Actualizar Rama Master
 echo. Q. Salir
 
 set /P tarea=Ingrese Valor de tarea:
@@ -45,6 +43,7 @@ if "%tarea%"=="3" goto op3
 if "%tarea%"=="4" goto op4
 if "%tarea%"=="5" goto op5
 if "%tarea%"=="6" goto op6
+if "%tarea%"=="7" goto op7
 if "%tarea%"=="q" goto salir
 if "%tarea%"=="Q" goto salir
 
@@ -118,6 +117,12 @@ goto:inicio
     git merge %Usuario%
     git push -u origin master
     git checkout %Usuario%
+    goto:inicio
+
+:op7
+::Actualizamos los cambios realizados en las ramas remotas
+    git pull origin master
+    pause
     goto:inicio
 
 :salir
