@@ -1,6 +1,6 @@
 /*
 proveedorcodigo
-prveedornombre
+proveedornombre
 FECHAORDEN
 ORDENCOMPRA
 FECHACADUCIDAD

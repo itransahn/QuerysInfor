@@ -114,11 +114,8 @@ goto:inicio
 ::actualizacion de master
     echo.
     git checkout master
-    pause
     git merge %Usuario%
-    pause 
     git push -u origin master
-    pause
     git checkout %Usuario%
     goto:inicio
 
