@@ -1,12 +1,13 @@
 @echo off
+::Actualizamos los cambios realizados en las ramas remotas
+git pull origin master
+pause
 ::captura de nombre de usuario github
 set /P Usuario=Ingrese su usario GitHub:
 ::mensaje de titulo de la ventana del cmd
 TITLE Bienvenid@ %Usuario% a Ransa
 MODE con:cols=80 lines=40
 
-::Actualizamos los cambios realizados en las ramas remotas
-git pull origin master
 pause
 ::construccion de la hora y fecha que se enviara en los comentarios
 for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
