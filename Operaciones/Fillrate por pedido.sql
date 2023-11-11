@@ -39,6 +39,17 @@ LEFT JOIN WMWHSE51.PACK p On s.PACKKEY  = p.PACKKEY
 WHERE LD.status not like '%HOLD%'   and LD.qty > 0
 and LD.storerkey like '%1770142%' and LD.sku =  OT.sku
 ),0) as 'STOCK BLOQUEADO',
+
+ISNULL((
+SELECT
+SUM(LD.qty / nullif(p.CASECNT,0 )) 
+FROM WMWHSE51.LOTXLOCXID LD
+LEFT JOIN WMWHSE51.SKU s  ON LD.sku = s.sku
+LEFT JOIN WMWHSE51.PACK p On s.PACKKEY  = p.PACKKEY
+WHERE LD.status not like '%OK%'   and LD.qty > 0
+and LD.storerkey like '%1770142%' and LD.sku =  OT.sku
+),0) as 'STOCK',
+
 (
 SELECT
 TOP 1

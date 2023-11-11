@@ -36,6 +36,6 @@ p.casecnt as FactorEmpaque
 FROM WMWHSE51.ORDERDETAIL OD
 LEFT JOIN WMWHSE51.sku s on OD.sku = s.sku AND S.storerKey = OD.storerKey
 LEFT JOIN WMWHSE51.pack p on s.packkey = p.packkey
-WHERE OD.status not in (04,02,17) --and OD.storerKey like 'M%'
+WHERE OD.status not in (04,02,17) and OD.storerKey like '%1770142%'
 )ABC
 GROUP by CAST(Fecha as date), Propietario, FACTOR
