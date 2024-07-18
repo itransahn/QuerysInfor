@@ -1,3 +1,4 @@
+--aqui se hizo una prueba
 SELECT table_name,
        column_name,
        data_type
