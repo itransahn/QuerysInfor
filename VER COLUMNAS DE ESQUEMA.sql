@@ -1,3 +1,4 @@
+--pruebas de carga
 SELECT table_name,
        column_name,
        data_type
