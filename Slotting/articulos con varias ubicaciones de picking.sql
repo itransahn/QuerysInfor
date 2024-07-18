@@ -24,6 +24,7 @@ pasillo
 columna
 nivel
 compartimento
+prueba
 */
 
 SELECT
