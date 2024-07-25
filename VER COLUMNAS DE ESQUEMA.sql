@@ -1,4 +1,5 @@
---pruebTHEN de carga
+--pruebas de carga
+--aqui se hizo una prueba
 SELECT table_name,
        column_name,
        data_type
