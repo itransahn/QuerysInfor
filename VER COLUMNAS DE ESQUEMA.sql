@@ -5,6 +5,6 @@ SELECT table_name,
        data_type
 FROM information_schema.columns
 WHERE table_schema = 'wmwhse51'
-    AND column_name = 'EQUIPMENTID'
+    AND column_name = '%CCESS%'
 
 
